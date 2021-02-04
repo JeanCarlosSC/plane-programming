@@ -2,14 +2,18 @@ package App
 
 import lib.sRAD.gui.sComponent.SFrame
 import lib.sRAD.gui.sComponent.SMenuBar
+import lib.sRAD.gui.sComponent.SPanel
 import javax.swing.JMenu
 import javax.swing.JMenuItem
 import javax.swing.JPopupMenu
 
 class App: SFrame() {
 
-    init {
+    var panelInferior: SPanel = listaTareas
 
+    init {
+        add(panelInferior)
+        add(dataBar)
 
         addMenuBar()
         setMainBar("My app")
