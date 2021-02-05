@@ -3,6 +3,7 @@ package App
 import lib.sRAD.gui.sComponent.SButton
 import lib.sRAD.gui.sComponent.SLabel
 import lib.sRAD.gui.sComponent.SPanel
+import lib.sRAD.gui.sComponent.STextArea
 import java.io.*
 import javax.swing.JOptionPane
 
@@ -44,13 +45,13 @@ object listaTareas: SPanel(0, 89, 1276, 627) {
         actualizar()
     }
 
-    fun actualizar () {
+    private fun actualizar () {
         removeAll()
         add(btAddTarea)
 
         if (tareas.isNotEmpty()) {
             for (i in tareas.indices) {
-                val tarea = SLabel(32, 32+i*64, 400, 30, tareas[i])
+                val tarea = STextArea(64, 64+i*96, 800, 64, tareas[i])
                 add(tarea)
             }
         }
