@@ -19,9 +19,11 @@ public class SButton extends JButton {
         super();
     }
 
-    /**
-     * Icon button
-     */
+//ICON BUTTON
+    public SButton(int x, int y, Icon icon) {
+        setProperties(x, y, icon, handCursor);
+    }
+
     public SButton(int x, int y, Icon icon, Cursor cursor) {
         setProperties(x, y, icon, cursor);
     }
@@ -77,11 +79,11 @@ public class SButton extends JButton {
     }
 
     public void setProperties(int x, int y, Icon icon, Cursor cursor) {
-        this.setLocation(x, y);
-        this.setContentAreaFilled(false);
-        this.setBorder(null);
-        this.setCursor(cursor);
-        this.setFocusable(false);
+        setLocation(x, y);
+        setContentAreaFilled(false);
+        setBorder(null);
+        setCursor(cursor);
+        setFocusable(false);
         setFocusPainted(false);
         if (icon != null) {
             this.setSize(icon.getIconWidth(), icon.getIconHeight());
