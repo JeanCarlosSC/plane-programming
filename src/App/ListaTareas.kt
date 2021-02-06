@@ -1,31 +1,39 @@
 package App
 
+import App.dataBar.moreStars
 import lib.sRAD.gui.sComponent.SButton
-import lib.sRAD.gui.sComponent.SLabel
 import lib.sRAD.gui.sComponent.SPanel
+import lib.sRAD.gui.sComponent.SScrollPane
 import lib.sRAD.gui.sComponent.STextArea
 import java.io.*
+import javax.swing.ImageIcon
 import javax.swing.JOptionPane
 
 object listaTareas: SPanel(0, 89, 1276, 627) {
 
     val tareas: MutableList<String>
     val btAddTarea: SButton
+    val pTareas = SPanel(2, 2, 790, 500)
 
     init {
-        btAddTarea = SButton(0,0,32,32,"+")
+        btAddTarea = SButton(832,32,32,32,"+")
         btAddTarea.addActionListener {
             val tarea = JOptionPane.showInputDialog(null, "Ingrese tarea")
             addTarea(tarea)
         }
+        add(btAddTarea)
 
+        pTareas.border = null
+        val scrollTareas = SScrollPane(32, 32, 800, 550)
+        scrollTareas.setViewportView(pTareas)
+        add(scrollTareas)
+
+        //load
         val file = File("tareas.ser")
         if(file.exists() && file.isFile) {
             tareas = ObjectInputStream(FileInputStream("tareas.ser")).readObject() as MutableList<String>
         }
-        else {
-            tareas = mutableListOf()
-        }
+        else tareas = mutableListOf()
         actualizar()
     }
 
@@ -46,14 +54,23 @@ object listaTareas: SPanel(0, 89, 1276, 627) {
     }
 
     private fun actualizar () {
-        removeAll()
-        add(btAddTarea)
+        pTareas.removeAll()
 
         if (tareas.isNotEmpty()) {
             for (i in tareas.indices) {
-                val tarea = STextArea(64, 64+i*96, 800, 64, tareas[i])
-                add(tarea)
+                val mushroom = SButton(38, 44+i*96, ImageIcon("resources/mushroom.png"))
+                mushroom.addActionListener {
+                    tareas.removeAt(i)
+                    guardar()
+                    moreStars()
+                    actualizar()
+                }
+                pTareas.add(mushroom)
+
+                val tarea = STextArea(64, 44+i*96, 800, 64, tareas[i])
+                pTareas.add(tarea)
             }
+            pTareas.setSize(790, if(tareas.size>6)tareas.size*100+32 else 800)
         }
         repaint()
     }

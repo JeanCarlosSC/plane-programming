@@ -11,9 +11,9 @@ import javax.swing.JOptionPane
 
 object dataBar: SPanel(0, 57, 1290, 32) {
 
-    var stars: Int
-    val btStar: SButton
-    val lStar: SLabel
+    private var stars: Int
+    private val btStar: SButton
+    private val lStar: SLabel
 
     init {
         val file = File("datos.ser")
@@ -28,10 +28,10 @@ object dataBar: SPanel(0, 57, 1290, 32) {
         btStar.addMouseListener (object : MouseListener {
             override fun mouseClicked(e: MouseEvent?) {
                 if (e!!.isControlDown) {
-                    stars--
+                    stars++
                 }
                 else {
-                    stars++
+                    stars--
                 }
                 guardar()
                 actualizar()
@@ -53,6 +53,12 @@ object dataBar: SPanel(0, 57, 1290, 32) {
 
         border = null
 
+        actualizar()
+    }
+
+    fun moreStars() {
+        stars++
+        guardar()
         actualizar()
     }
 

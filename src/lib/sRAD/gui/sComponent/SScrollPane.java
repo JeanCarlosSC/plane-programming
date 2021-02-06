@@ -8,14 +8,18 @@ import static lib.sRAD.gui.tool.AdvancedGraphBuilderKt.getCustomScroll;
 
 public class SScrollPane extends JScrollPane {
 
+    public SScrollPane(int x, int y, int width, int height) {
+        setProperties(x, y, width, height);
+    }
+
     public void setProperties(int x, int y, int width, int height){
-        this.setBounds(x, y, width, height);
-        this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        this.verticalScrollBar.setUI(getCustomScroll());
-        this.horizontalScrollBar.setUI(getCustomScroll());
-        this.setBackground(DTII1);
-        this.setBorder(semiDarkGray2Border);
+        setBounds(x, y, width, height);
+        setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        verticalScrollBar.setUI(getCustomScroll());
+        horizontalScrollBar.setUI(getCustomScroll());
+        setBackground(DTII1);
+        setBorder(semiDarkGray2Border);
     }
 
 }
