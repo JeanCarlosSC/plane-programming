@@ -37,6 +37,10 @@ public class SButton extends JButton {
         setProperties(x, y, width, height, text, cursor, font, background, foreground, border, backgroundEntered, borderEntered);
     }
 
+    public SButton(int x, int y, int width, int height, String text, Color background, Color backgroundEntered, Border borderEntered, Color foreground) {
+        setProperties(x, y, width, height, text, handCursor, fontTitleMini, background, foreground, semiDarkGray2Border, backgroundEntered, borderEntered);
+    }
+
     public void setProperties(int x, int y, int width, int height, String text, Cursor cursor, Font font, Color background, Color foreground,
                               Border border, Color backgroundEntered, Border borderEntered) {
         setProperties(x, y, width, height, cursor, background);
