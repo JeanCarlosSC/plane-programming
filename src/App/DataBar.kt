@@ -13,12 +13,15 @@ object dataBar: SPanel(0, 57, 1290, 32) {
 
     private var stars: Int
     private var games: Int
+    private var cines: Int
 
     private val btStar: SButton
     private val btGame: SButton
+    private val btCine: SButton
 
     private val lStar: SLabel
     private val lGame: SLabel
+    private val lCine: SLabel
 
     init {
         val file = File("datos.ser")
@@ -26,10 +29,12 @@ object dataBar: SPanel(0, 57, 1290, 32) {
             val objectInputStream = ObjectInputStream(FileInputStream("datos.ser"))
             stars = objectInputStream.readObject() as Int
             games = objectInputStream.readObject() as Int
+            cines = objectInputStream.readObject() as Int
         }
         else {
             stars = 0
             games = 0
+            cines = 0
         }
 
         btStar = SButton(10,5, ImageIcon("resources/star.png"))
@@ -71,6 +76,27 @@ object dataBar: SPanel(0, 57, 1290, 32) {
         })
         lGame = SLabel(96, 0, 32, 32, "")
 
+        btCine = SButton(134,5, ImageIcon("resources/cine.png"))
+        btCine.addMouseListener (object : MouseListener {
+            override fun mouseClicked(e: MouseEvent?) {
+                if (e!!.isControlDown) {
+                    if(stars>0) moreCines()
+                    else JOptionPane.showMessageDialog(null, "No posee suficientes estrellas", "Error", 0)
+                }
+                else lessCines()
+            }
+
+            override fun mousePressed(e: MouseEvent?) { }
+
+            override fun mouseReleased(e: MouseEvent?) { }
+
+            override fun mouseEntered(e: MouseEvent?) { }
+
+            override fun mouseExited(e: MouseEvent?) { }
+
+        })
+        lCine = SLabel(160, 0, 32, 32, "")
+
         border = null
 
         actualizar()
@@ -101,6 +127,19 @@ object dataBar: SPanel(0, 57, 1290, 32) {
         actualizar()
     }
 
+    fun moreCines() {
+        stars--
+        cines ++
+        guardar()
+        actualizar()
+    }
+
+    fun lessCines() {
+        cines--
+        guardar()
+        actualizar()
+    }
+
     private fun actualizar() {
         removeAll()
 
@@ -112,6 +151,10 @@ object dataBar: SPanel(0, 57, 1290, 32) {
         lGame.text = "$games"
         add(lGame)
 
+        add(btCine)
+        lCine.text = "$cines"
+        add(lCine)
+
         repaint()
     }
 
@@ -120,6 +163,7 @@ object dataBar: SPanel(0, 57, 1290, 32) {
             val salida = ObjectOutputStream(FileOutputStream("datos.ser"))
             salida.writeObject(stars)
             salida.writeObject(games)
+            salida.writeObject(cines)
         }
         catch (e: Exception) {
             JOptionPane.showMessageDialog(null, "No se pudo guardar la informacion del data bar", "Error", 0)
