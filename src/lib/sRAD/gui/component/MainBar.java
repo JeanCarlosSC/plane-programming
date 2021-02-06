@@ -1,14 +1,13 @@
 package lib.sRAD.gui.component;
 
 import lib.sRAD.gui.sComponent.SButton;
+import lib.sRAD.gui.sComponent.SFrame;
 import lib.sRAD.gui.sComponent.SLabel;
 import lib.sRAD.gui.sComponent.SPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 
 import static lib.sRAD.gui.component.Resource.*;
 
@@ -16,7 +15,6 @@ public class MainBar extends SPanel {
 
     private final SPanel mainPanel;
 
-    private ImageIcon iLogo;
     private final ImageIcon iBtExitOn = new ImageIcon("resources/mainBar/btExitOn.png");
     private final ImageIcon iBtExitOff = new ImageIcon("resources/mainBar/btExitOff.png");
 
@@ -28,11 +26,11 @@ public class MainBar extends SPanel {
     private int x0 = 0;
     private int y0 = 0;
 
-    public MainBar(JFrame frame) {
+    public MainBar(SFrame frame) {
         this(frame, 1280, true, Theme.bg2, DTII3);
     }
 
-    public MainBar(JFrame frame, int screenWidth, Boolean move, Color backgroundColor, Color borderColor) {
+    public MainBar(SFrame frame, int screenWidth, Boolean move, Color backgroundColor, Color borderColor) {
         mainPanel = new SPanel(0, 0, screenWidth, 27, backgroundColor, null);
 
         if(move){
@@ -53,6 +51,11 @@ public class MainBar extends SPanel {
             });
         }
         add(mainPanel);
+
+        ImageIcon iBtMinOff = new ImageIcon("resources/mainBar/btMinOff.png");
+        SButton btMin = new SButton(screenWidth - 80, 0, iBtMinOff, defaultCursor);
+        btMin.addActionListener(e -> frame.setExtendedState(SFrame.ICONIFIED));
+        mainPanel.add(btMin);
 
         btExit.setProperties(screenWidth - 48, 0, iBtExitOff, defaultCursor);
         btExit.addMouseListener (new MouseListener() {
@@ -91,7 +94,7 @@ public class MainBar extends SPanel {
     }
 
     public void setLogo(ImageIcon icon) {
-        iLogo = new ImageIcon(icon.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT));
+        ImageIcon iLogo = new ImageIcon(icon.getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT));
         lLogo.setProperties(5, 5, iLogo);
     }
 
