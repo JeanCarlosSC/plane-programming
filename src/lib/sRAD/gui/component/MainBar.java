@@ -17,6 +17,8 @@ public class MainBar extends SPanel {
 
     private final ImageIcon iBtExitOn = new ImageIcon("resources/mainBar/btExitOn.png");
     private final ImageIcon iBtExitOff = new ImageIcon("resources/mainBar/btExitOff.png");
+    private final ImageIcon iBtMinOff = new ImageIcon("resources/mainBar/btMinOff.png");
+    private final ImageIcon iBtMinOn = new ImageIcon("resources/mainBar/btMinOn.png");
 
     private final SLabel lLogo = new SLabel();
     private final SLabel lTitle = new SLabel();
@@ -52,9 +54,33 @@ public class MainBar extends SPanel {
         }
         add(mainPanel);
 
-        ImageIcon iBtMinOff = new ImageIcon("resources/mainBar/btMinOff.png");
-        SButton btMin = new SButton(screenWidth - 80, 0, iBtMinOff, defaultCursor);
-        btMin.addActionListener(e -> frame.setExtendedState(SFrame.ICONIFIED));
+        SButton btMin = new SButton(screenWidth - 75, 0, iBtMinOff, defaultCursor);
+        btMin.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frame.setExtendedState(SFrame.ICONIFIED);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btMin.setIcon(iBtMinOn);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btMin.setIcon(iBtMinOff);
+            }
+        });
         mainPanel.add(btMin);
 
         btExit.setProperties(screenWidth - 48, 0, iBtExitOff, defaultCursor);
