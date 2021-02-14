@@ -14,11 +14,9 @@ object dataBar: SPanel(0, 57, 1290, 32) {
     private var stars: Int
     private var games: Int
     private var cines: Int
-
     private val btStar: SButton
     private val btGame: SButton
     private val btCine: SButton
-
     private val lStar: SLabel
     private val lGame: SLabel
     private val lCine: SLabel
@@ -116,7 +114,7 @@ object dataBar: SPanel(0, 57, 1290, 32) {
 
     fun moreGames() {
         stars--
-        games += 4
+        games ++
         guardar()
         actualizar()
     }
