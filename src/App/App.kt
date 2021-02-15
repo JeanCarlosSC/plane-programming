@@ -1,15 +1,13 @@
 package App
 
-import lib.sRAD.gui.component.Resource.*
 import lib.sRAD.gui.component.VentanaEmergente
 import lib.sRAD.gui.sComponent.*
 import javax.swing.JMenu
 import javax.swing.JMenuItem
-import javax.swing.JPopupMenu
 
 class App: SFrame() {
 
-    var panelInferior: SPanel = listaTareas
+    var panelInferior: SPanel = listas
 
     init {
         add(panelInferior)
