@@ -1,8 +1,8 @@
 package app.gui
 
-import app.dataBar
-import app.gui.panel.Resumen
-import app.listas
+import app.DataBar
+import app.gui.vista.Resumen
+import app.Listas
 import lib.sRAD.gui.sComponent.*
 import javax.swing.JMenu
 import javax.swing.JMenuItem
@@ -13,14 +13,14 @@ object Ventana: SFrame() {
 
     init {
         add(contenedor)
-        add(dataBar)
+        add(DataBar)
         add(MenuBar)
         setMainBar("My app")
         setProperties()
     }
 
     fun setVistaListas() {
-        setVista(listas)
+        setVista(Listas)
     }
 
     fun setVistaResumen() {
@@ -37,14 +37,14 @@ object Ventana: SFrame() {
 
 object MenuBar: SMenuBar() {
     init {
-        val mVistas = JMenu("Vistas")
+        val mVistas = JMenu("Cambiar vista")
         add(mVistas)
 
-        val miResumen = JMenuItem("Resumen")
+        val miResumen = JMenuItem("Vista de resumen")
         miResumen.addActionListener { Ventana.setVistaResumen() }
         mVistas.add(miResumen)
 
-        val miListas = JMenuItem("Listas")
+        val miListas = JMenuItem("Vista de listas")
         miListas.addActionListener { Ventana.setVistaListas() }
         mVistas.add(miListas)
     }

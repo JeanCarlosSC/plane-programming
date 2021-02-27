@@ -1,6 +1,6 @@
 package app
 
-import app.dataBar.moreStars
+import app.DataBar.moreStars
 import lib.sRAD.gui.sComponent.SButton
 import lib.sRAD.gui.sComponent.SPanel
 import lib.sRAD.gui.sComponent.SScrollPane
@@ -9,7 +9,7 @@ import java.io.*
 import javax.swing.ImageIcon
 import javax.swing.JOptionPane
 
-object listas: SPanel(SPanel.EXTERNO, 0, 89, 1276, 627) {
+object Listas: SPanel(SPanel.EXTERNO, 0, 89, 1276, 627) {
 
     //estados
     val TAREAS = 0

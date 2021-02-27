@@ -9,7 +9,7 @@ import java.io.*
 import javax.swing.ImageIcon
 import javax.swing.JOptionPane
 
-object dataBar: SPanel(SPanel.EXTERNO, 0, 57, 1290, 32) {
+object DataBar: SPanel(EXTERNO, 0, 57, 1290, 32) {
 
     private var stars: Int
     private var games: Int
