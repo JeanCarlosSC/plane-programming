@@ -1,6 +1,6 @@
-package App
+package app
 
-import App.dataBar.moreStars
+import app.dataBar.moreStars
 import lib.sRAD.gui.sComponent.SButton
 import lib.sRAD.gui.sComponent.SPanel
 import lib.sRAD.gui.sComponent.SScrollPane
@@ -9,7 +9,7 @@ import java.io.*
 import javax.swing.ImageIcon
 import javax.swing.JOptionPane
 
-object listas: SPanel(0, 89, 1276, 627) {
+object listas: SPanel(SPanel.EXTERNO, 0, 89, 1276, 627) {
 
     //estados
     val TAREAS = 0
@@ -21,7 +21,7 @@ object listas: SPanel(0, 89, 1276, 627) {
     //gui
     val btAddItem: SButton //agrega item
     val btMode: SButton // cambia de lista
-    val contentPane = SPanel(2, 2, 790, 500)
+    val contentPane = SPanel(SPanel.EXTERNO, 2, 2, 790, 500)
 
     init {
         btAddItem = SButton(832,32,32,32,"+")

@@ -8,7 +8,7 @@ public class VentanaEmergente extends SFrame {
 
     public VentanaEmergente(SFrame frame, int width, int height) {
         this.frame = frame;
-        setProperties(width, height, Theme.vebg);
+        setProperties(width, height, Theme.veBg);
     }
 
     public void lanzar() {

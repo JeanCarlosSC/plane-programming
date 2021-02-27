@@ -2,6 +2,7 @@ package lib.sRAD.gui.sComponent;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
@@ -9,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import static lib.sRAD.gui.component.Resource.*;
-import static lib.sRAD.gui.tool.AdvancedGraphBuilderKt.getCustomScroll;
-import static lib.sRAD.gui.tool.AdvancedGraphBuilderKt.getCustomTable;
+import static lib.sRAD.gui.sComponent.SScrollPane.getCustomScroll;
 
 public class STable extends JScrollPane {
 
@@ -63,7 +63,7 @@ public class STable extends JScrollPane {
 
         setBackground(DTII4);
         viewport.setBackground(DTII1);
-        setBorder(semiDarkGray2Border);
+        setBorder(DTII4Border);
         verticalScrollBar.setUI(getCustomScroll());
         horizontalScrollBar.setUI(getCustomScroll());
     }
@@ -94,6 +94,39 @@ public class STable extends JScrollPane {
         table.setRowHeight(rowHeight);
         table.setDefaultRenderer(Object.class, getCustomTable());
         table.setGridColor(gridColor);
+    }
+
+//advanced graphic builder
+    public static DefaultTableCellRenderer getCustomTable() {
+        return getCustomTable(DTII1, DTII1, mdb1, darkWhite, fontText);
+    }
+
+    public static DefaultTableCellRenderer getCustomTable(
+            Color colorPrincipal, Color colorSecundario, Color colorSeleccion, Color colorFuente, Font fuente
+    ) {
+        return new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(
+                    JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column
+            ) {
+                JLabel celda = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                celda.setOpaque(true);
+                celda.setFont(fuente);
+                celda.setForeground(colorFuente);
+                celda.setHorizontalAlignment(CENTER);
+                if (row % 2 != 0) {
+                    celda.setBackground(colorPrincipal);
+                }
+                else {
+                    celda.setBackground(colorSecundario);
+                }
+                if (isSelected) {
+                    celda.setBackground(colorSeleccion);
+                    celda.setForeground(white);
+                }
+                return celda;
+            }
+        };
     }
 
 }

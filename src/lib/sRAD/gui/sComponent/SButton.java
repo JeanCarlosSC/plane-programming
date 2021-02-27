@@ -30,7 +30,7 @@ public class SButton extends JButton {
 
 //TEXT BUTTON
     public SButton(int x, int y, int width, int height, String text) {
-        this(x, y, width, height, text, handCursor, fontTitleMini, Theme.bbg, darkWhite, semiDarkGray2Border, semiDarkGray, semiDarkGray2Border);
+        this(x, y, width, height, text, handCursor, fontTitleMini, Theme.btBg, darkWhite, DTII4Border, semiDarkGray, DTII4Border);
     }
     public SButton(int x, int y, int width, int height, String text, Cursor cursor, Font font, Color background, Color foreground, Border border,
                    Color backgroundEntered, Border borderEntered) {
@@ -38,7 +38,7 @@ public class SButton extends JButton {
     }
 
     public SButton(int x, int y, int width, int height, String text, Color background, Color backgroundEntered, Border borderEntered, Color foreground) {
-        setProperties(x, y, width, height, text, handCursor, fontTitleMini, background, foreground, semiDarkGray2Border, backgroundEntered, borderEntered);
+        setProperties(x, y, width, height, text, handCursor, fontTitleMini, background, foreground, DTII4Border, backgroundEntered, borderEntered);
     }
 
     public void setProperties(int x, int y, int width, int height, String text, Cursor cursor, Font font, Color background, Color foreground,

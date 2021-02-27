@@ -1,4 +1,4 @@
-package App
+package app
 
 import lib.sRAD.gui.sComponent.SButton
 import lib.sRAD.gui.sComponent.SLabel
@@ -9,7 +9,7 @@ import java.io.*
 import javax.swing.ImageIcon
 import javax.swing.JOptionPane
 
-object dataBar: SPanel(0, 57, 1290, 32) {
+object dataBar: SPanel(SPanel.EXTERNO, 0, 57, 1290, 32) {
 
     private var stars: Int
     private var games: Int

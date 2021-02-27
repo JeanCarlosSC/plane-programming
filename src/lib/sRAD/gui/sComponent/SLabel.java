@@ -9,7 +9,6 @@ import static lib.sRAD.gui.component.Resource.fontText;
 public class SLabel extends JLabel {
 
 //DEFAULT LABEL
-
     /**
      * default
      */
@@ -22,17 +21,9 @@ public class SLabel extends JLabel {
     public SLabel (int x, int y, ImageIcon icon) {
         setProperties(x, y, icon, null);
     }
+
     public SLabel (int x, int y, ImageIcon icon, Cursor cursor) {
         setProperties(x, y, icon, cursor);
-    }
-
-//TEXT LABEL
-
-    public SLabel (int x, int y, int width, int height, String text) {
-        setProperties(x, y, width, height, text, fontText, darkWhite, LEFT, null);
-    }
-    public SLabel (int x, int y, int width, int height, String text, Font font, Color foreground, int hAlignment, Color background) {
-        setProperties(x , y, width, height, text, font, foreground, hAlignment, background);
     }
 
     /**
@@ -43,9 +34,28 @@ public class SLabel extends JLabel {
         this.setLocation(x, y);
         this.setIcon(icon);
     }
+
     public void setProperties(int x, int y, ImageIcon icon, Cursor cursor) {
         setProperties(x, y, icon);
         this.setCursor(cursor);
+    }
+
+//TEXT LABEL
+
+    public SLabel (int x, int y, int width, int height, String text) {
+        setProperties(x, y, width, height, text, fontText, darkWhite, LEFT, null);
+    }
+
+    public SLabel (int x, int y, int width, int height, String text, int hAlignment) {
+        setProperties(x, y, width, height, text, fontText, darkWhite, hAlignment, null);
+    }
+
+    public SLabel (int x, int y, int width, int height, String text, Font font) {
+        setProperties(x, y, width, height, text, font, darkWhite, LEFT, null);
+    }
+
+    public SLabel (int x, int y, int width, int height, String text, Font font, Color foreground, int hAlignment, Color background) {
+        setProperties(x , y, width, height, text, font, foreground, hAlignment, background);
     }
 
     /**
@@ -58,6 +68,7 @@ public class SLabel extends JLabel {
         this.setText(text);
         this.setHorizontalAlignment(hAlignment);
     }
+
     public void setProperties(int x, int y, int width, int height, String text, Font font, Color foreground, int hAlignment, Color background) {
         setProperties(x, y, width, height, text, font, foreground, hAlignment);
         this.setBackground(background);

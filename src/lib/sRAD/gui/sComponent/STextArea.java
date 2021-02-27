@@ -19,7 +19,7 @@ public class STextArea extends JTextArea {
      * @param height
      */
     public STextArea(int x, int y, int width, int height) {
-        setProperties(x, y, width, height, true, true, "", darkWhite, darkGray, fontText, semiDarkGrayBlueBorder, LEFT_ALIGNMENT);
+        setProperties(x, y, width, height, true, true, "", darkWhite, darkGray, fontText, DTII1Border, LEFT_ALIGNMENT);
     }
 
     /**
