@@ -1,8 +1,7 @@
 package app.gui
 
-import app.DataBar
 import app.gui.vista.Resumen
-import app.Listas
+import app.gui.vista.PListas
 import lib.sRAD.gui.sComponent.*
 import javax.swing.JMenu
 import javax.swing.JMenuItem
@@ -20,7 +19,7 @@ object Ventana: SFrame() {
     }
 
     fun setVistaListas() {
-        setVista(Listas)
+        setVista(PListas)
     }
 
     fun setVistaResumen() {

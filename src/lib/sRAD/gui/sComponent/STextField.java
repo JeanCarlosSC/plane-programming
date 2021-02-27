@@ -45,4 +45,7 @@ public class STextField extends JTextField {
         setHorizontalAlignment(hAlignment);
     }
 
+    public Boolean isNotEmpty() {
+        return !getText().isEmpty();
+    }
 }

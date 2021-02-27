@@ -1,4 +1,4 @@
-package app
+package app.gui
 
 import lib.sRAD.gui.sComponent.SButton
 import lib.sRAD.gui.sComponent.SLabel
@@ -57,7 +57,7 @@ object DataBar: SPanel(EXTERNO, 0, 57, 1290, 32) {
         btGame.addMouseListener (object : MouseListener {
             override fun mouseClicked(e: MouseEvent?) {
                 if (e!!.isControlDown) {
-                    if(stars>0) moreGames()
+                    if(stars >0) moreGames()
                     else JOptionPane.showMessageDialog(null, "No posee suficientes estrellas", "Error", 0)
                 }
                 else lessGames()
@@ -78,7 +78,7 @@ object DataBar: SPanel(EXTERNO, 0, 57, 1290, 32) {
         btCine.addMouseListener (object : MouseListener {
             override fun mouseClicked(e: MouseEvent?) {
                 if (e!!.isControlDown) {
-                    if(stars>0) moreCines()
+                    if(stars >0) moreCines()
                     else JOptionPane.showMessageDialog(null, "No posee suficientes estrellas", "Error", 0)
                 }
                 else lessCines()
