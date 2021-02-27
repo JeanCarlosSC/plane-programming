@@ -4,9 +4,11 @@ import app.gui.Ventana
 import app.logic.Listas
 import lib.sRAD.gui.component.VentanaEmergente
 import lib.sRAD.gui.sComponent.*
+import javax.swing.ImageIcon
 
 object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
     private val btAddList = SButton(32, 32, 128, 32, "Añadir lista")
+    var cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
 
     init {
         btAddList.addActionListener { addList() }
@@ -14,35 +16,98 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
     }
 
     fun actualizar() {
+        val index = cbListas.selectedIndex
+        cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
+        cbListas.selectedIndex = index
+        cbListas.addActionListener { actualizar() }
+
         removeAll()
         add(btAddList)
         if (Listas.isNotEmpty()) {
-            val cbListas = SComboBox(SComboBox.DECORADO, 160, 32, 128, 32, Listas.getNombres())
+            //ComboBox
             add(cbListas)
+
+            //pItems
+            val pItems = SPanel(INTERNO, 0, 0, 436, 336)
+
+            val items = Listas.getListAt(cbListas.selectedIndex).items
+            for (i in items.indices) {
+                val btCompletar = SButton(32, 32 + i*32, ImageIcon("resources/mushroom.png"))
+                btCompletar.addActionListener{
+                    Listas.removeItemAt(cbListas.selectedIndex, i)
+                    actualizar()
+                }
+                pItems.add(btCompletar)
+
+                val item = SLabel(64, 25 + i*32, 300, 28, items[i])
+                pItems.add(item)
+            }
+            if(64+items.size*32 > 306){
+                pItems.setSize(pItems.width, 64+items.size*32)
+            }
+            else {
+                pItems.setSize(pItems.width, 336)
+            }
+
+            val scroll = SScrollPane(32, 96, 456, 356, pItems)
+            add(scroll)
+
+            //btAddItem
+            val btAddItem = SButton(352, 32, 100, 32, "Añadir item")
+            btAddItem.addActionListener { addItem(cbListas.selectedIndex) }
+            add(btAddItem)
         }
+        updateUI()
+    }
+
+    private fun addItem(indexList: Int) {
+        val ventana = VentanaEmergente(Ventana, 380, 140)
+
+        val lItem = SLabel(32, 32, 300, 28, "Inserte item")
+        ventana.add(lItem)
+
+        val tfItem = STextField(210, 30, 128, 32)
+        ventana.add(tfItem)
+
+        val btConfirm = SButton(76, 80, 100, 32, "AÑADIR")
+        btConfirm.addActionListener {
+            if (tfItem.isNotEmpty) {
+                Listas.insertItemAt(indexList, tfItem.text)
+            }
+            ventana.cerrar()
+            actualizar()
+        }
+        ventana.add(btConfirm)
+
+        val btCancel = SButton(208, 80, 100, 32, "CANCELAR")
+        btCancel.addActionListener { ventana.cerrar() }
+        ventana.add(btCancel)
+
+        ventana.lanzar()
     }
 
     private fun addList() {
-        val ventana = VentanaEmergente(Ventana, 600, 400)
+        val ventana = VentanaEmergente(Ventana, 380, 140)
 
         val lNombre = SLabel(32, 32, 300, 28, "Inserte nombre de lista")
-        add(lNombre)
+        ventana.add(lNombre)
 
-        val tfNombre = STextField(64, 64, 128, 32)
-        add(tfNombre)
+        val tfNombre = STextField(210, 30, 128, 32)
+        ventana.add(tfNombre)
 
-        val btConfirm = SButton(96, 96, 100, 32, "Añadir")
+        val btConfirm = SButton(76, 80, 100, 32, "AÑADIR")
         btConfirm.addActionListener {
             if (tfNombre.isNotEmpty) {
                 Listas.insertNewList(tfNombre.text)
             }
+            ventana.cerrar()
             actualizar()
         }
-        add(btConfirm)
+        ventana.add(btConfirm)
 
-        val btCancel = SButton(228, 96, 100, 32, "CANCELAR")
+        val btCancel = SButton(208, 80, 100, 32, "CANCELAR")
         btCancel.addActionListener { ventana.cerrar() }
-        add(btCancel)
+        ventana.add(btCancel)
 
         ventana.lanzar()
     }
