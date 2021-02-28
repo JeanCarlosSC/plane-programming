@@ -1,5 +1,6 @@
 package app.gui.vista
 
+import app.gui.DataBar
 import app.gui.Ventana
 import app.logic.Listas
 import lib.sRAD.gui.component.VentanaEmergente
@@ -8,14 +9,14 @@ import javax.swing.ImageIcon
 
 object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
     private val btAddList = SButton(576, 32, 128, 32, "Añadir lista")
-    var cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
+    private var cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
 
     init {
         btAddList.addActionListener { addList() }
         actualizar()
     }
 
-    fun actualizar() {
+    private fun actualizar() {
         val index = if(Listas.size > 0 && cbListas.selectedIndex == -1) 0 else cbListas.selectedIndex
         cbListas = SComboBox(SComboBox.DECORADO, 416, 32, 128, 32, Listas.getNombres())
         cbListas.selectedIndex = index
@@ -35,6 +36,7 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
                 val btCompletar = SButton(32, 32 + i*32, ImageIcon("resources/mushroom.png"))
                 btCompletar.addActionListener{
                     Listas.removeItemAt(cbListas.selectedIndex, i)
+                    DataBar.moreStars()
                     actualizar()
                 }
                 pItems.add(btCompletar)

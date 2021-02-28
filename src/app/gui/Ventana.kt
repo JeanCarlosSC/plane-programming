@@ -12,7 +12,7 @@ object Ventana: SFrame() {
         add(contenedor)
         add(DataBar)
         add(MenuBar)
-        setMainBar("My app")
+        setMainBar("App personal")
         setProperties()
     }
 
