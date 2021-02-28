@@ -7,7 +7,7 @@ import lib.sRAD.gui.sComponent.*
 import javax.swing.ImageIcon
 
 object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
-    private val btAddList = SButton(32, 32, 128, 32, "Añadir lista")
+    private val btAddList = SButton(576, 32, 128, 32, "Añadir lista")
     var cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
 
     init {
@@ -17,7 +17,7 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
 
     fun actualizar() {
         val index = if(Listas.size > 0 && cbListas.selectedIndex == -1) 0 else cbListas.selectedIndex
-        cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
+        cbListas = SComboBox(SComboBox.DECORADO, 416, 32, 128, 32, Listas.getNombres())
         cbListas.selectedIndex = index
         cbListas.addActionListener { actualizar() }
 
@@ -28,7 +28,7 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
             add(cbListas)
 
             //pItems
-            val pItems = SPanel(INTERNO, 0, 0, 436, 336)
+            val pItems = SPanel(INTERNO, 0, 0, 748, 464)
 
             val items = Listas.getListAt(cbListas.selectedIndex).items
             for (i in items.indices) {
@@ -42,18 +42,18 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
                 val item = SLabel(64, 25 + i*32, 300, 28, items[i])
                 pItems.add(item)
             }
-            if(64+items.size*32 > 306){
+            if(64+items.size*32 > 434){
                 pItems.setSize(pItems.width, 64+items.size*32)
             }
             else {
-                pItems.setSize(pItems.width, 336)
+                pItems.setSize(pItems.width, 464)
             }
 
-            val scroll = SScrollPane(32, 96, 456, 356, pItems)
+            val scroll = SScrollPane(256, 96, 768, 484, pItems)
             add(scroll)
 
             //btAddItem
-            val btAddItem = SButton(352, 32, 100, 32, "Añadir item")
+            val btAddItem = SButton(736, 32, 128, 32, "Añadir item")
             btAddItem.addActionListener { addItem(cbListas.selectedIndex) }
             add(btAddItem)
         }
