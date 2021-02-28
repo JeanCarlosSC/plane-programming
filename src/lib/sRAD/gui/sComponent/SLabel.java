@@ -3,7 +3,7 @@ package lib.sRAD.gui.sComponent;
 import javax.swing.*;
 import java.awt.*;
 
-import static lib.sRAD.gui.component.Resource.darkWhite;
+import static lib.sRAD.gui.component.Resource.DTII14;
 import static lib.sRAD.gui.component.Resource.fontText;
 
 public class SLabel extends JLabel {
@@ -43,15 +43,15 @@ public class SLabel extends JLabel {
 //TEXT LABEL
 
     public SLabel (int x, int y, int width, int height, String text) {
-        setProperties(x, y, width, height, text, fontText, darkWhite, LEFT, null);
+        setProperties(x, y, width, height, text, fontText, DTII14, LEFT, null);
     }
 
     public SLabel (int x, int y, int width, int height, String text, int hAlignment) {
-        setProperties(x, y, width, height, text, fontText, darkWhite, hAlignment, null);
+        setProperties(x, y, width, height, text, fontText, DTII14, hAlignment, null);
     }
 
     public SLabel (int x, int y, int width, int height, String text, Font font) {
-        setProperties(x, y, width, height, text, font, darkWhite, LEFT, null);
+        setProperties(x, y, width, height, text, font, DTII14, LEFT, null);
     }
 
     public SLabel (int x, int y, int width, int height, String text, Font font, Color foreground, int hAlignment, Color background) {

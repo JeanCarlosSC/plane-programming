@@ -24,13 +24,13 @@ public class SScrollPane extends JScrollPane {
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         verticalScrollBar.setUI(getCustomScroll());
         horizontalScrollBar.setUI(getCustomScroll());
-        setBackground(DTII1);
+        setBackground(DTII3);
         setBorder(DTII4Border);
     }
 
     //Advanced graphic builder
     public static BasicScrollBarUI getCustomScroll() {
-        return getCustomScroll(7, 10, DTII1, gray, darkBlueGray);
+        return getCustomScroll(7, 10, DTII3, DTII7, SP4);
     }
 
     public static BasicScrollBarUI getCustomScroll(int grosor, int radio, Color colorFondo, Color colorBarraNormal, Color colorBarraArrastrada) {

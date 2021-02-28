@@ -3,7 +3,6 @@ package lib.sRAD.gui.component;
 import lib.sRAD.gui.sComponent.SFrame;
 
 public class VentanaEmergente extends SFrame {
-
     private final SFrame frame;
 
     public VentanaEmergente(SFrame frame, int width, int height) {
@@ -20,5 +19,4 @@ public class VentanaEmergente extends SFrame {
         frame.setEnabled(true);
         this.setVisible(false);
     }
-
 }

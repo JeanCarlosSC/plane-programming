@@ -30,7 +30,7 @@ public class SButton extends JButton {
 
 //TEXT BUTTON
     public SButton(int x, int y, int width, int height, String text) {
-        this(x, y, width, height, text, handCursor, fontTitleMini, Theme.btBg, darkWhite, DTII4Border, semiDarkGray, DTII4Border);
+        this(x, y, width, height, text, handCursor, fontTitleMini, Theme.btBg, DTII14, DTII4Border, DTII8, DTII4Border);
     }
     public SButton(int x, int y, int width, int height, String text, Cursor cursor, Font font, Color background, Color foreground, Border border,
                    Color backgroundEntered, Border borderEntered) {

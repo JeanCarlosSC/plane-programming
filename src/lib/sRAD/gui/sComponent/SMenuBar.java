@@ -14,7 +14,7 @@ public class SMenuBar extends JMenuBar {
     private Border generalBorder;
 
     public SMenuBar() {
-        this(0, 29, 1280, 28, DTII1, darkWhite, DTII1Border);
+        this(0, 29, 1280, 28, DTII3, DTII14, DTII1Border);
     }
 
     public SMenuBar (int x, int y, int width, int height, Color background, Color foreground, Border border) {

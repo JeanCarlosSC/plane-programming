@@ -51,25 +51,25 @@ public class STable extends JScrollPane {
         tabla.setPreferredSize(new Dimension(cellWidth*matriz.get(0).size(), cellHeight*(matriz.size()-1)));
 
         JTableHeader header = tabla.getTableHeader();
-        header.setBackground(DTII4);
+        header.setBackground(DTII6);
         header.setReorderingAllowed(false);
         header.setSize(cellWidth*matriz.get(0).size(), 30);
         header.setPreferredSize(new Dimension(cellWidth*matriz.get(0).size(), 30));
-        header.setDefaultRenderer(getCustomTable(DTII4, null, null, white, fontText));
+        header.setDefaultRenderer(getCustomTable(DTII6, null, null, WHITE, fontText));
 
         setViewportView(tabla);
         setLocation(x, y);
         setSize(width, height);
 
-        setBackground(DTII4);
-        viewport.setBackground(DTII1);
+        setBackground(DTII6);
+        viewport.setBackground(DTII3);
         setBorder(DTII4Border);
         verticalScrollBar.setUI(getCustomScroll());
         horizontalScrollBar.setUI(getCustomScroll());
     }
 
     public JScrollPane getPanelBar(JTable table, int x, int y, int width, int height) {
-        return getPanelBar(table, x, y, width, height, DTII1, null);
+        return getPanelBar(table, x, y, width, height, DTII3, null);
     }
 
     public JScrollPane getPanelBar(JTable table, int x, int y, int width, int height, Color background, Border border) {
@@ -82,11 +82,11 @@ public class STable extends JScrollPane {
     }
 
     public void setProperties(JTable table, DefaultTableModel modelo) {
-        setProperties(table, modelo, DTII4, 40);
+        setProperties(table, modelo, DTII6, 40);
     }
 
     public void setProperties(JTable table, DefaultTableModel modelo, int rowHeight) {
-        setProperties(table, modelo, DTII4, rowHeight);
+        setProperties(table, modelo, DTII6, rowHeight);
     }
 
     public void setProperties(JTable table, DefaultTableModel modelo, Color gridColor, int rowHeight) {
@@ -98,7 +98,7 @@ public class STable extends JScrollPane {
 
 //advanced graphic builder
     public static DefaultTableCellRenderer getCustomTable() {
-        return getCustomTable(DTII1, DTII1, mdb1, darkWhite, fontText);
+        return getCustomTable(DTII3, DTII3, MDB1, DTII14, fontText);
     }
 
     public static DefaultTableCellRenderer getCustomTable(
@@ -122,7 +122,7 @@ public class STable extends JScrollPane {
                 }
                 if (isSelected) {
                     celda.setBackground(colorSeleccion);
-                    celda.setForeground(white);
+                    celda.setForeground(WHITE);
                 }
                 return celda;
             }

@@ -19,7 +19,7 @@ public class STextArea extends JTextArea {
      * @param height
      */
     public STextArea(int x, int y, int width, int height) {
-        setProperties(x, y, width, height, true, true, "", darkWhite, darkGray, fontText, DTII1Border, LEFT_ALIGNMENT);
+        setProperties(x, y, width, height, true, true, "", DTII14, DTII1, fontText, DTII1Border, LEFT_ALIGNMENT);
     }
 
     /**
@@ -31,7 +31,7 @@ public class STextArea extends JTextArea {
      * @param text
      */
     public STextArea(int x, int y, int width, int height, String text) {
-        setProperties(x, y, width, height, false, true, text, darkWhite, null, fontText, null, LEFT_ALIGNMENT);
+        setProperties(x, y, width, height, false, true, text, DTII14, null, fontText, null, LEFT_ALIGNMENT);
     }
 
     public void setProperties(int x, int y, int width, int height, Boolean editable, Boolean lineWrap, String text, Color foreground, Color background,
