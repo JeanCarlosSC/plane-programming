@@ -22,9 +22,9 @@ object DataBar: SPanel(EXTERNO, 0, 57, 1290, 32) {
     private val lCine: SLabel
 
     init {
-        val file = File("datos.ser")
+        val file = File("data/datos.ser")
         if(file.exists() && file.isFile) {
-            val objectInputStream = ObjectInputStream(FileInputStream("datos.ser"))
+            val objectInputStream = ObjectInputStream(FileInputStream("data/datos.ser"))
             stars = objectInputStream.readObject() as Int
             games = objectInputStream.readObject() as Int
             cines = objectInputStream.readObject() as Int
@@ -158,7 +158,7 @@ object DataBar: SPanel(EXTERNO, 0, 57, 1290, 32) {
 
     private fun guardar() {
         try {
-            val salida = ObjectOutputStream(FileOutputStream("datos.ser"))
+            val salida = ObjectOutputStream(FileOutputStream("data/datos.ser"))
             salida.writeObject(stars)
             salida.writeObject(games)
             salida.writeObject(cines)
