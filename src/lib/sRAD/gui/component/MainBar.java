@@ -1,9 +1,6 @@
 package lib.sRAD.gui.component;
 
-import lib.sRAD.gui.sComponent.SButton;
-import lib.sRAD.gui.sComponent.SFrame;
-import lib.sRAD.gui.sComponent.SLabel;
-import lib.sRAD.gui.sComponent.SPanel;
+import lib.sRAD.gui.sComponent.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -76,22 +73,20 @@ public class MainBar extends SPanel {
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if(e.getSource() == btExit) {
-                        if(JOptionPane.showConfirmDialog(null, "Desea salir?") == 0)
-                            System.exit(0);
-                    }
+                    SOptionPane.exitMessage();
                 }
 
                 @Override
-                public void mousePressed(MouseEvent e) {}
+                public void mousePressed(MouseEvent e) { }
 
                 @Override
-                public void mouseReleased(MouseEvent e) {}
+                public void mouseReleased(MouseEvent e) { }
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    if(e.getSource() == btExit)
+                    if(e.getSource() == btExit) {
                         btExit.setIcon(iBtExitOn);
+                    }
                 }
             });
         }
@@ -108,14 +103,10 @@ public class MainBar extends SPanel {
                 }
 
                 @Override
-                public void mousePressed(MouseEvent e) {
-
-                }
+                public void mousePressed(MouseEvent e) { }
 
                 @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
+                public void mouseReleased(MouseEvent e) { }
 
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -139,5 +130,4 @@ public class MainBar extends SPanel {
     public void setTitle(String title) {
         lTitle.setProperties(370, 0, 570, 28, title, fontTitleMini, Theme.mbFg, SwingConstants.CENTER);
     }
-
 }
