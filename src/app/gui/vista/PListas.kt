@@ -18,7 +18,7 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
     fun actualizar() {
         val index = cbListas.selectedIndex
         cbListas = SComboBox(SComboBox.DECORADO, 192, 32, 128, 32, Listas.getNombres())
-        cbListas.selectedIndex = index
+        cbListas.selectedIndex = if(Listas.size == 1) 0 else index
         cbListas.addActionListener { actualizar() }
 
         removeAll()

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="myApp:jar">
-    <output-path>$PROJECT_DIR$/</output-path>
+    <output-path>$PROJECT_DIR$/../../software/myApp</output-path>
     <root id="root">
       <element id="archive" name="myApp.jar">
         <element id="directory" name="META-INF">
