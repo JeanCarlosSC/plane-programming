@@ -39,7 +39,7 @@ object PListas: SPanel(EXTERNO, 0, 89, 1276, 627) {
                 }
                 pItems.add(btCompletar)
 
-                val item = SLabel(64, 25 + i*32, 300, 28, items[i])
+                val item = SLabel(64, 25 + i*32, 684, 28, items[i])
                 pItems.add(item)
             }
             if(64+items.size*32 > 434){
