@@ -1,3 +1,2 @@
-# myApp
-mi app.
-🎪🎢🎡
+# prototype-2
+🎮 Basic gameplay.
